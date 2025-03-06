@@ -1,0 +1,31 @@
+﻿@model Country
+@{
+	ViewData["Title"] = "Country Details";
+}
+<h2 class="text-center p-2">Country Details</h2>
+<div class="row">
+	<div class="col">
+		<ul class="list-group text-center">
+			<li class="list-group-item">
+				<img src="~/Images/@Model.Flag" alt=""/>
+				<h3>@Model.Games.Name</h3>
+			</li>
+			<li class="list-group-item">
+				<h3>@Model.SportType.SportName</h3>
+			</li>
+			<li class="list-group-item">
+				<form method="post" asp-action="Add"
+				asp-controller="Favorites">
+			<a asp-action="TheGames" class="btn btn-primary">
+				Return
+			</a>
+			<button type="submit" class="btn btn-primary">
+				Add Favorite
+			</button>
+			<input type="hidden" asp-for="@Model.countryID"/>
+					<input type="hidden" asp-for="@Model.countryName" />
+			</form>
+			</li>
+		</ul>
+	</div>
+</div>
