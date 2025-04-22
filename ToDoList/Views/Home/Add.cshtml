@@ -1,0 +1,54 @@
+﻿@model Ticket
+
+<h2>New Task</h2>
+
+<form asp-action="Add" method="post">
+	<div class="mb-3">
+		<label asp-for="Description" class="form-label">Description:</label>
+		<input asp-for="Description" class="form-control" />
+		<div>
+			<span asp-validation-for="Description" class="text-danger"></span>
+		</div>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="Name" class="form-label">TasK Name:</label>
+		<input asp-for="Name" class="form-control" />
+		<div>
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="PointId" class="form-label">Point Value:</label>
+		<select asp-for="PointId" class="form-select"
+		asp-items="@(new SelectList(ViewBag.Points,"PointId", "PointValues"))">
+	<option value=""></option>
+	</select>
+	<div>
+		<span asp-validation-for="PointId" class="text-danger"></span>
+	</div>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="SprintNum" class="form-label">Sprint Number:</label>
+		<input asp-for="SprintNum" class="form-control" />
+		<div>
+			<span asp-validation-for="SprintNum" class="text-danger"></span>
+		</div>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="StatusId" class="form-label">Status:</label>
+		<select asp-for="StatusId" class="form-select"
+				asp-items="@(new SelectList(ViewBag.Statuses,"StatusId", "Name"))">
+			<option value=""></option>
+		</select>
+		<div>
+			<span asp-validation-for="StatusId" class="text-danger"></span>
+		</div>
+	</div>
+
+	<submit-button class="me-2">Add</submit-button>
+	<a asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
